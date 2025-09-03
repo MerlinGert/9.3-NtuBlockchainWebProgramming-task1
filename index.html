@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>MetaMask Swap</title>
+
+    <!-- CDN stuff -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="d-flex">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="metamask-logo">
+                    <span class="logo-text">MetaMask</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-item">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="sidebar-item active">
+                    <i class="bi bi-arrow-left-right"></i>
+                    <span>Move crypto</span>
+                    <i class="bi bi-chevron-right ms-auto"></i>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="bi bi-compass"></i>
+                    <span>Discover</span>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="bi bi-credit-card"></i>
+                    <span>Card</span>
+                    <i class="bi bi-plus-circle ms-auto"></i>
+                </a>
+                <a href="#" class="sidebar-item">
+                    <i class="bi bi-calculator"></i>
+                    <span>Tax Hub</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="main-content">
+            <div class="top-bar">
+                <h2 class="page-title">Swap</h2>
+                <div class="top-bar-tools">
+                    <div class="search-container me-3">
+                        <i class="bi bi-search"></i>
+                        <input type="text" class="search-input" placeholder="Search for a token...">
+                    </div>
+                    <button class="btn btn-link text-white me-2">
+                        <i class="bi bi-bell"></i>
+                        <span class="badge bg-primary">2</span>
+                    </button>
+                    <button id="connectWallet" class="btn btn-primary">
+                        0xd578...99fd
+                    </button>
+                </div>
+            </div>
+
+            <div class="swap-container">
+                <div class="mb-4">
+                    <h5 class="swap-section-title">Swap from</h5>
+
+                    <div class="swap-input-row">
+                        <div class="token-selector-split" id="fromToken">
+                            <div class="d-flex align-items-center">
+                                <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png"
+                                     alt="ETH" class="token-icon me-2">
+                                <span class="token-symbol">ETH</span>
+                                <i class="bi bi-chevron-down ms-2"></i>
+                            </div>
+                        </div>
+
+                        <div class="amount-box">
+                            <div class="amount-input-row">
+                                <input type="text" id="fromAmount" class="amount-input-field" placeholder="0">
+                                <div id="fromAmountUSD" class="amount-usd-display">≈$0.00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="balanceStatusText" class="balance-txt mt-2">
+                        0.0000 ETH available to swap
+                    </div>
+                </div>
+
+                <!-- swap btn -->
+                <div class="text-center mb-4">
+                    <button id="swapDirection" class="swap-btn-thing">
+                        <i class="bi bi-arrow-up-down"></i>
+                    </button>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="swap-section-title">Swap to</h5>
+                    <!-- to token select -->
+                    <div class="token-area" id="toToken">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <div class="token-placeholder-icon me-2"></div>
+                                <span class="token-placeholder-text">Select token</span>
+                            </div>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exchangeRateDisplay" class="exchange-rate-display mt-3">
+                    <span id="exchangeRateText">Select tokens to see exchange rate</span>
+                    <i class="bi bi-arrow-repeat refresh-icon"></i>
+                </div>
+                <!-- main button -->
+                <button id="getQuotesBtn" class="btn btn-primary w-100 mt-4">
+                    Get Quotes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="tokenModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white">Select Token</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="text" id="tokenSearch" class="form-control search-input" 
+                               placeholder="Search tokens...">
+                    </div>
+                    <div id="tokenList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
